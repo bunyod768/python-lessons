@@ -73,7 +73,8 @@ shaxs4 = {
 # for k,v in count.items():
 #     print("\n",k.title())
 #     for ink,inv in v.items():
-#         print(f"{k.title()}ning {ink} {inv}")        
+#         print(f"{k.title()}ning {ink} {inv}")
+# 5-mashq        
 count = {
     "Uzbekistan":{
         "poytaxti":"Toshkent",
