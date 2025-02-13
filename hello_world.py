@@ -9,3 +9,4 @@ count = ""
 for num in numbers:
     count += translate.get(num,"exception") + " "
 print(count)    
+
