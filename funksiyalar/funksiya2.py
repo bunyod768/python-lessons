@@ -37,17 +37,17 @@ import math
 # print(f"eng katta son {katta}")
 # 4-mashq
 # yigish = []
-# def hisobla(radius):
-#     perimetr = 2 * math.pi * radius
-#     diametr = perimetr / 2
-#     yuza = math.pi * (radius**2)
-#     doiralar = {
-#         "radius":radius,
-#         "perimietr":perimetr,
-#         "diametr":diametr,
-#         "yuza":yuza
-#         }
-#     return doiralar
+def hisobla(radius):
+    perimetr = 2 * math.pi * radius
+    diametr = perimetr / 2
+    yuza = math.pi * (radius**2)
+    doiralar = {
+        "radius":radius,
+        "perimietr":perimetr,
+        "diametr":diametr,
+        "yuza":yuza
+        }
+    return doiralar
 # sorov = True
 # while True:
 #     if sorov:
@@ -62,33 +62,33 @@ import math
 #4-mashq(Oraliqdagi tub sonlar)
 # Min = int(input("quyi chegara:"))
 # Max = int(input("yuqori chegara:"))
-# def Tub(Min=None, Max =None):
-#     royxat = []
-#     s = 0
-#     i = 2
-#     while i < Max:
-#         j = 1
-#         while j <= i:
-#             if i % j == 0:
-#                 s+=1
-#             j+=1
-#         if s == 2:
-#             royxat.append(i)
-#         s=0    
-#         i+=1 
+def Tub(Min=None, Max =None):
+    royxat = []
+    s = 0
+    i = 2
+    while i < Max:
+        j = 1
+        while j <= i:
+            if i % j == 0:
+                s+=1
+            j+=1
+        if s == 2:
+            royxat.append(i)
+        s=0    
+        i+=1 
         
-#     yangi_royxat = []
-#     for item in royxat:
-#         if item >= Min:
-#             yangi_royxat.append(item)
+    yangi_royxat = []
+    for item in royxat:
+        if item >= Min:
+            yangi_royxat.append(item)
 
-#     return yangi_royxat 
+    return yangi_royxat 
           
 # natija = Tub(Min,Max)
 # print(natija)
 # 5-mashq(Fibonachi ketma-ketligi)
 
-son = int(input("hadlar sonini kiriting:"))
+# son = int(input("hadlar sonini kiriting:"))
 def fibo_hisob(son):
     fibo = [1,2]
     while len(fibo) < son:
@@ -96,8 +96,8 @@ def fibo_hisob(son):
        t =sum(temp)
        fibo.append(t)
     return fibo     
-natija = fibo_hisob(son)
-print("Fibonachi ketma-ketligi -> \n","-> ",natija)
+# natija = fibo_hisob(son)
+# print("Fibonachi ketma-ketligi -> \n","-> ",natija)
   
 
 
