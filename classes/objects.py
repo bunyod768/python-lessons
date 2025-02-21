@@ -52,5 +52,11 @@ for x in avtomobilllar:
     print(x,"\n")
 print("salondagi avtomobillar soni:",salon.Avtomobillar_soni)
 
+# dender funksiyalarsiz chiqarish.
+def see_methods(klass):
+    return [method for method in dir(klass) if method.startswith('__') is False]
+
+print(see_methods(Avtosalon))
+
 
             
