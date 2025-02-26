@@ -1,1 +1,1 @@
-repositoryga  python darslari muntazam tarzda joylanib boriladi
+python darslari
