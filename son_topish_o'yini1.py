@@ -33,53 +33,53 @@ while True:
     son0 = son1
     
     while sorov != 't':
-       #1-usul
-       print(f"Men {son0} sonini o'yladim.")
-       s2+=1             
-       sorov = input("Sizni soningiz katta bolsa,'>' kichik bolsa,'<' agar togri bolsa,'t' belgilarini qo'ying ")
-       if sorov == '<' or sorov == '>':         
-          if sorov == '>':
-             son2 = func(son0,yuqori)
-             yuqori -= 1
-             print(f"Men {son2} sonini o'yladim.")
-             sorov = input("Sizni soningiz katta bolsa,'>' kichik bolsa,'<' agar togri bolsa,'t' belgilarini qo'ying ")
-             son0 =  son2
-             s2 += 1
-          else:
-             son2 = func(quyi,son0)
-             quyi += 1 
-             print(f"Men {son2} sonini o'yladim.")
-             sorov = input("Sizni soningiz katta bolsa,'>' kichik bolsa,'<' agar togri bolsa,'t' belgilarini qo'ying ")
-             son0 = son2
-             s2 += 1  
-      #  if sorov == 't':
-      #     s2 += 1
-      #     print("Tabriklayman. Topdingiz")
-      #     break
-    print("Tabriklayman. Topdingiz")        
+   #     #1-usul
+   #     print(f"Men {son0} sonini o'yladim.")
+   #     s2+=1             
+   #     sorov = input("Sizni soningiz katta bolsa,'>' kichik bolsa,'<' agar togri bolsa,'t' belgilarini qo'ying ")
+   #     if sorov == '<' or sorov == '>':         
+   #        if sorov == '>':
+   #           son2 = func(son0,yuqori)
+   #           yuqori -= 1
+   #           print(f"Men {son2} sonini o'yladim.")
+   #           sorov = input("Sizni soningiz katta bolsa,'>' kichik bolsa,'<' agar togri bolsa,'t' belgilarini qo'ying ")
+   #           son0 =  son2
+   #           s2 += 1
+   #        else:
+   #           son2 = func(quyi,son0)
+   #           quyi += 1 
+   #           print(f"Men {son2} sonini o'yladim.")
+   #           sorov = input("Sizni soningiz katta bolsa,'>' kichik bolsa,'<' agar togri bolsa,'t' belgilarini qo'ying ")
+   #           son0 = son2
+   #           s2 += 1  
+   #    #  if sorov == 't':
+   #    #     s2 += 1
+   #    #     print("Tabriklayman. Topdingiz")
+   #    #     break
+   #  print("Tabriklayman. Topdingiz")        
              
        # 2-usul
-      #  komp_son = r.randint(0,10)
-      #  print(f"men o'ylagan son:{komp_son}")
-      #  yakun = input("Men o'ylagan son katta bo'sa (>),kichik bo'lsa(<) belgilardan birini qo'ying. Agar to'g'ri bo'lsa (t) harfini yozing:")
-      #  old_son = komp_son
-      #  if yakun == '<' or yakun == '>':         
-      #     while True:
-      #        s2 +=1
-      #        if yakun == '<':
-                
-      #           yakun = input(f"Men o'ylagan son:{komp1_son}.Siz o'ylagan son {komp1_son} dan katta bo'sa (>),kichik bo'lsa(<) belgilardan birini qo'ying. Agar to'g'ri bo'lsa (t) harfini yozing.")
-                
-      #        else:
-                
-      #           yakun = input(f"Men o'ylagan son:{komp1_son}. Siz o'ylagan son {komp1_son} dan katta bo'sa (>),kichik bo'lsa(<) belgilardan birini qo'ying. Agar to'g'ri bo'lsa (t) harfini yozing.")
-                
-      #        if yakun == 't':
-      #           print("Men o'zimni tabriklayman  ")
-      #           break
-                
-      #  if yakun == 't':         
-      #     break
+       tanlanganlar  = []
+       komp_son = r.randint(0,10)
+       min_son = 0 
+       max_son = 10
+       while True:
+             tanlanganlar.append(komp_son)
+             print(f"men o'ylagan son:{komp_son}")
+             yakun = input("Men o'ylagan sondan katta bo'sa (>),kichik bo'lsa(<) belgilardan birini qo'ying. Agar to'g'ri bo'lsa (t) harfini yozing:")              
+             s2 +=1
+             if yakun == '<': 
+                max_son = komp_son
+                while komp_son in tanlanganlar:
+                  komp_son = r.randint(min_son,komp_son)
+             if yakun == '>':
+                min_son = komp_son
+                while komp_son in tanlanganlar:
+                   komp_son = r.randint(komp_son,max_son)
+             if yakun == 't':
+                print("Men o'zimni tabriklayman  ")
+                sorov = yakun
+                break 
     print(f"Men {s2} marta urindim.")
     print(f"Siz esa {s1} marta urindingiz.")
     if s1 > s2:
