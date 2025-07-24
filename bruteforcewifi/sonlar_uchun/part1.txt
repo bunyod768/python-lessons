@@ -1,0 +1,1 @@
+bu yerda part1,2,3,4 fayllarga nums.py fayli orqali 00000000 dan 99999999 gacha sonlar to'ldirib chiqiladi.
