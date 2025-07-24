@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IELTS Reading Practice - Antarctica</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --passage-bg: #f8f9fa;
+            --questions-bg: #ffffff;
+            --border-color: #e0e0e0;
+            --highlight-color: springgreen; /* Changed highlight color */
+            
+            /* New Header & Social Colors */
+            --header-bg: #F8F8F8; /* Very light gray for header background */
+            --header-text: #333333; /* Dark text for light header */
+            --telegram-blue: #0088CC;
+            --instagram-pink: #E4405F;
+            --youtube-red: #FF0000;
+
+            /* Button Colors (Red themed) */
+            --button-bg: #CC0000; /* Primary button red */
+            --button-hover: #A30000; /* Darker red on hover */
+            
+            --correct-color: #28a745; /* Standard green */
+            --incorrect-color: #dc3545; /* Standard red */
+            --progress-complete: #28a745;
+            --progress-incomplete: #bdbdbd;
+
+            /* Timer Colors (Red themed) */
+            --timer-bg: #ffebee; /* Very light red/pink */
+            --timer-text: #d32f2f; /* Darker red */
+
+            --footer-bg: #f5f5f5;
+        }
+
+        .night-mode {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --passage-bg: #1e1e1e;
+            --questions-bg: #1e1e1e;
+            --border-color: #424242;
+            --highlight-color: #2E8B57; /* Darker springgreen for night mode */
+            
+            /* Night Mode Header & Social Colors */
+            --header-bg: #1a1a1a; /* Dark gray for header background */
+            --header-text: #ffffff; /* White text for dark header */
+            --telegram-blue: #005f99; /* Darker telegram blue */
+            --instagram-pink: #b2334b; /* Darker instagram pink */
+            --youtube-red: #b20000; /* Darker YouTube red */
+
+            /* Night Mode Button Colors */
+            --button-bg: #990000; /* Darker primary button red */
+            --button-hover: #7a0000; /* Even darker red on hover */
+            
+            --correct-color: #218838; /* Darker green */
+            --incorrect-color: #c82333; /* Darker red */
+            --progress-complete: #218838;
+            --progress-incomplete: #616161;
+
+            /* Night Mode Timer Colors */
+            --timer-bg: #420000; /* Dark red */
+            --timer-text: #ffcdd2; /* Lighter red */
+
+            --footer-bg: #121212;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+        
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Space between social links */
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Space between icon and text */
+            color: white; /* Text color is always white for social links */
+            padding: 8px 15px;
+            border-radius: 50px; /* Pill shape */
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-1px);
+        }
+
+        .social-link i {
+            font-size: 1.2em; /* Makes icon slightly larger than text */
+        }
+
+        /* Specific styling for social links */
+        .social-link.telegram {
+            background-color: var(--telegram-blue);
+        }
+        .social-link.telegram:hover {
+            background-color: #007bb5; /* Slightly darker */
+        }
+
+        .social-link.instagram {
+            background-color: var(--instagram-pink);
+        }
+        .social-link.instagram:hover {
+            background-color: #d62976; /* Slightly darker */
+        }
+
+        .social-link.youtube {
+            background-color: var(--youtube-red);
+        }
+        .social-link.youtube:hover {
+            background-color: #CC0000; /* Slightly darker */
+        }
+
+
+        .header-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .timer-container {
+            background-color: var(--timer-bg);
+            color: var(--timer-text);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .timer-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .timer-controls button {
+            background: none;
+            border: none;
+            color: var(--timer-text);
+            cursor: pointer;
+            font-size: 16px;
+            padding: 4px;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timer-controls button:hover {
+            background-color: rgba(0,0,0,0.1); /* Darker hover for light timer */
+        }
+        .night-mode .timer-controls button:hover {
+            background-color: rgba(255,255,255,0.2); /* Lighter hover for dark timer */
+        }
+
+        .mode-toggle {
+            background: none;
+            border: none;
+            color: var(--header-text);
+            cursor: pointer;
+            font-size: 20px;
+            padding: 6px;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mode-toggle:hover {
+            background-color: rgba(0,0,0,0.1); /* Darker hover for light header */
+        }
+        .night-mode .mode-toggle:hover {
+            background-color: rgba(255,255,255,0.2); /* Lighter hover for dark header */
+        }
+
+        main {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .passage-container, .questions-container {
+            height: 100%;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .passage-container {
+            width: 50%;
+            background-color: var(--passage-bg);
+            border-right: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .questions-container {
+            width: 50%;
+            background-color: var(--questions-bg);
+        }
+
+        .passage-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .passage-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .passage-text {
+            font-size: 17px;
+        }
+        
+        .question-text {
+             font-size: 17px;
+             line-height: 1.8; /* Increased line-height for fill-in-the-blank */
+        }
+
+        .passage-text p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .highlight {
+            background-color: var(--highlight-color);
+            cursor: pointer;
+        }
+
+        .highlight-tooltip {
+            position: absolute;
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            z-index: 1000;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 25px 0 15px;
+            color: var(--text-color);
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .question-group {
+            margin-bottom: 30px;
+        }
+
+        .question {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: var(--passage-bg);
+            border-left: 4px solid var(--border-color);
+        }
+
+        .question-title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: baseline; /* Align baselines of number and text */
+        }
+
+        .question-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background-color: var(--progress-incomplete);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            margin-right: 10px;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .question.answered .question-number {
+            background-color: var(--progress-complete);
+        }
+
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .option input {
+            margin-right: 8px;
+        }
+
+        /* Styling for the new inline input fields */
+        .fill-in-the-blank {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid var(--text-color);
+            width: 150px;
+            font-family: inherit;
+            font-size: 1em; /* Inherit font size from parent */
+            color: inherit;
+            padding: 0 4px 2px 4px; /* Add some padding */
+            margin: 0 3px; /* Add some margin */
+            vertical-align: baseline; /* Align with the text */
+            text-align: center;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .fill-in-the-blank:focus {
+            border-bottom-color: var(--button-bg);
+        }
+
+
+        .instructions {
+            font-size: 14px;
+            color: #757575;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        footer {
+            background-color: var(--footer-bg);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
+        }
+
+        .progress-container {
+            display: flex;
+            gap: 8px;
+        }
+
+        .progress-item {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: var(--progress-incomplete);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .progress-item:hover {
+            transform: scale(1.1);
+        }
+
+        .progress-item.completed {
+            background-color: var(--progress-complete);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--button-bg);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--button-hover);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid var(--button-bg); /* Use primary button color for border */
+            color: var(--button-bg); /* Use primary button color for text */
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(204, 0, 0, 0.1); /* Light red tint on hover */
+        }
+        .night-mode .btn-secondary:hover {
+            background-color: rgba(153, 0, 0, 0.2); /* Darker red tint on hover for night mode */
+        }
+
+
+        .feedback-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .feedback-container {
+            background-color: var(--passage-bg);
+            width: 90%;
+            max-width: 900px;
+            height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feedback-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .feedback-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        #close-feedback {
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+        .score-display {
+            font-size: 24px;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+        
+        .feedback-body {
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .feedback-item {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: var(--questions-bg);
+        }
+
+        .feedback-question {
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feedback-answer {
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            background-color: rgba(0,0,0,0.05);
+        }
+
+        .correct {
+            color: var(--correct-color);
+        }
+
+        .incorrect {
+            color: var(--incorrect-color);
+        }
+
+        .feedback-explanation {
+            margin-top: 10px;
+            padding: 10px;
+            border-left: 3px solid var(--button-bg); /* Use primary button color for explanation border */
+            background-color: rgba(0,0,0,0.03);
+        }
+
+        .feedback-passage {
+            margin-top: 8px;
+            font-style: italic;
+            color: #757575;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            main {
+                flex-direction: column;
+            }
+            
+            .passage-container, .questions-container {
+                width: 100%;
+                height: 50%;
+            }
+            
+            .passage-container {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+            
+            .progress-container {
+                flex-wrap: wrap;
+                max-width: 60%;
+            }
+        }
+
+        @media (max-width: 768px) {
+             .logo-area {
+                flex-wrap: wrap; /* Allow items to wrap to the next line */
+                justify-content: center; /* Center items when wrapped */
+                gap: 8px; /* Adjusted gap for smaller screens */
+             }
+             .social-link {
+                padding: 6px 10px; /* Reduced padding for smaller screens */
+                font-size: 13px; /* Reduced font size for smaller screens */
+             }
+             .social-link i {
+                font-size: 1.1em; /* Slightly smaller icon */
+             }
+             .social-link span {
+                display: inline; /* Ensure text is visible */
+             }
+        }
+
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px;
+            }
+            .header-controls {
+                width: 100%;
+                justify-content: space-around;
+            }
+            .progress-container {
+                max-width: 50%;
+            }
+            .progress-item {
+                width: 26px;
+                height: 26px;
+                font-size: 12px;
+            }
+            footer {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .action-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+<div class="header-controls">
+<div class="timer-container">
+<i class="fas fa-clock"></i>
+<span id="timer">20:00</span>
+<div class="timer-controls">
+<button id="start-timer" title="Start"><i class="fas fa-play"></i></button>
+<button id="pause-timer" title="Pause"><i class="fas fa-pause"></i></button>
+<button id="reset-timer" title="Reset"><i class="fas fa-redo"></i></button>
+</div>
+</div>
+<button class="mode-toggle" id="night-mode-toggle" title="Toggle Night Mode">
+<i class="fas fa-moon"></i>
+</button>
+</div>
+</header>
+<main>
+<div class="passage-container" id="passage-container">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<div style="margin: 10px 0;">
+<a href="https://t.me/ielts_cream" style="text-decoration: none; font-size: 18px;" target="_blank">
+<i class="fab fa-telegram" style="margin-right: 8px;"></i>Join our Telegram channel @ielts_cream
+  </a>
+</div>
+<div style="margin: 10px 0;">
+<button onclick="changeFontSize(1)">A+</button>
+<button onclick="changeFontSize(-1)">A-</button>
+</div>
+<div class="passage-content">
+<div class="passage-title">The Development of Exploration and Scientific Research in Antarctica</div>
+<div class="passage-text" id="passage-text">
+<p>The modern scientific age in Antarctica really began with the introduction of aircraft in the 1920s. Aircraft transformed the possibilities of exploring the frozen continent around the South Pole, because before that Antarctic travel had been limited to the use of dog-teams pulling sledges. A plane could survey thousands of square kilometres an hour, equivalent to a whole summer's work using previous techniques. However, the first planes in Antarctica, such as the Lockheed Vega and the Ford Trimotor, were unreliable in freezing conditions. This made polar flying particularly hazardous, since there was little chance of rescue if a plane was forced down in a remote region.</p>
+<p>It was in 1928 that Herbert Wilkins hoped to make the first flight in Antarctica, attempting to cross the continent. A further attempt in 1930 was also unsuccessful, but Wilkins' aerial photographs seemed to show that the Antarctic Peninsula was in fact an island, not part of the continent as had previously been thought. This new theory caused some excitement among geographers and cartographers. However, the British Grahamland Expedition of 1934-37 proved conclusively that the Antarctic Peninsula was attached to the rest of the continent.</p>
+<p>In 1929, the famous American pilot Richard Byrd flew over the South Pole, and another American, Lincoln Ellsworth, made a successful Antarctic flight in 1935. Although Ellsworth claimed a sector of the continent for the USA, the American government did not follow it up. In 1938, the German explorer, Alfred Ritscher, led an expedition south across the sea. Once Antarctica was reached, the aircraft that had been stored in pieces on the ship's deck was reconstructed. The aeroplane was then launched and used to stake a claim to one section of Antarctica by dropping thousands of tiny flags from the air.</p>
+<p>A significant motivation behind many Antarctic expeditions right up to the 1940s was simply the spirit of adventure. Many of these expeditions had a large measure of private funding, and often the subsequent book about the expedition was a means of clearing debts incurred. The vast majority of Antarctic expeditions since 1940 have been funded by governments, usually for political reasons and scientific research.</p>
+<p>The setting up of the Research and Development Committee in Britain was a significant development in the history of science in the Antarctic. The Committee's report, published in 1920, focused particularly on the sea that circles the Antarctic continent. The report proposed detailed scientific investigations of the physiology and behaviour of the whales inhabiting the region. As a result, a shore station at Grytviken on the island of South Georgia near Antarctica was occupied by scientists for six years. In addition, three research ships were commissioned. They travelled through the Southern Ocean all year, researching physical and chemical oceanography. The high quality of the specimens and data collected by scientists produced nearly 40 large volumes of reports. This entire project came to be known as the Discovery Investigations. The costs of the Discovery Investigations were completely covered by the proceeds of a tax that was placed on whaling businesses operating in the area.</p>
+<p>It was in 1875 that the idea of international scientific collaboration at the poles was first proposed, with the aim of collecting valuable data. The result was the first Polar Year in 1882–83. A second Polar Year was organised 50 years later, involving 44 nations and scientific bodies. Both of these Polar Years had been timed to coincide with a period when the sun was at its lowest level of activity, in order to monitor the impact this had. So much interest was aroused by this process that a third Polar Year was organised 25 years later. In 1951 it was decided that this scientific programme should be expanded to cover the globe. This new project was renamed the International Geophysical Year (IGY). Antarctica was chosen as an area for particular attention because of its important influence on global weather. Throughout this period, politics were kept firmly in the background.</p>
+<p>The IGY took place in 1957–58 and it was during this period that the last great Antarctic journey was accomplished. Dr Vivian Fuchs' privately funded Trans Antarctic Expedition finally achieved what the explorer Ernest Shackleton had first set out to do in 1914. Driving modified tractors, Fuchs' team traversed Antarctica from coast to coast in 99 days and covered 2,180 miles or roughly 3,500 kilometres. But there were scientific objectives as well, because the expedition's measurements allowed the first estimates to be made of the volume of ice that existed across the whole continent. So successful was the IGY that it was extended for a further year in order to promote Antarctic science. It also led directly to the signing of a treaty by members of the international community to regulate human conduct in Antarctica over the years ahead.</p>
+</div>
+</div>
+</div>
+<div class="questions-container" id="questions-container">
+<div class="section-title">Questions 1-6</div>
+<div class="instructions">Do the following statements agree with the information given in Reading Passage 1?</div>
+<div class="instructions">In boxes 1-6 on your answer sheet, write:<br/>
+    TRUE - if the statement agrees with the information<br/>
+    FALSE - if the statement contradicts the information<br/>
+    NOT GIVEN - if there is no information on this
+</div>
+<div class="question-group">
+<div class="question" id="q1">
+<div class="question-title">
+<div class="question-number">1</div>
+<div class="question-text">Until the 1920s, humans relied on animals to explore Antarctica.</div>
+</div>
+<div class="options">
+<label class="option"><input name="q1" type="radio" value="TRUE"/> TRUE</label>
+<label class="option"><input name="q1" type="radio" value="FALSE"/> FALSE</label>
+<label class="option"><input name="q1" type="radio" value="NOT GIVEN"/> NOT GIVEN</label>
+</div>
+</div>
+<div class="question" id="q2">
+<div class="question-title">
+<div class="question-number">2</div>
+<div class="question-text">Herbert Wilkins failed to fly across the Antarctic continent in 1928.</div>
+</div>
+<div class="options">
+<label class="option"><input name="q2" type="radio" value="TRUE"/> TRUE</label>
+<label class="option"><input name="q2" type="radio" value="FALSE"/> FALSE</label>
+<label class="option"><input name="q2" type="radio" value="NOT GIVEN"/> NOT GIVEN</label>
+</div>
+</div>
+<div class="question" id="q3">
+<div class="question-title">
+<div class="question-number">3</div>
+<div class="question-text">The expedition of 1934-37 confirmed a new theory about the Antarctic Peninsula.</div>
+</div>
+<div class="options">
+<label class="option"><input name="q3" type="radio" value="TRUE"/> TRUE</label>
+<label class="option"><input name="q3" type="radio" value="FALSE"/> FALSE</label>
+<label class="option"><input name="q3" type="radio" value="NOT GIVEN"/> NOT GIVEN</label>
+</div>
+</div>
+<div class="question" id="q4">
+<div class="question-title">
+<div class="question-number">4</div>
+<div class="question-text">Lincoln Ellsworth was influenced by the flight of Richard Byrd.</div>
+</div>
+<div class="options">
+<label class="option"><input name="q4" type="radio" value="TRUE"/> TRUE</label>
+<label class="option"><input name="q4" type="radio" value="FALSE"/> FALSE</label>
+<label class="option"><input name="q4" type="radio" value="NOT GIVEN"/> NOT GIVEN</label>
+</div>
+</div>
+<div class="question" id="q5">
+<div class="question-title">
+<div class="question-number">5</div>
+<div class="question-text">The government of the USA claimed part of Antarctica in 1935.</div>
+</div>
+<div class="options">
+<label class="option"><input name="q5" type="radio" value="TRUE"/> TRUE</label>
+<label class="option"><input name="q5" type="radio" value="FALSE"/> FALSE</label>
+<label class="option"><input name="q5" type="radio" value="NOT GIVEN"/> NOT GIVEN</label>
+</div>
+</div>
+<div class="question" id="q6">
+<div class="question-title">
+<div class="question-number">6</div>
+<div class="question-text">After 1940, nations rather than individuals paid for most Antarctic expeditions.</div>
+</div>
+<div class="options">
+<label class="option"><input name="q6" type="radio" value="TRUE"/> TRUE</label>
+<label class="option"><input name="q6" type="radio" value="FALSE"/> FALSE</label>
+<label class="option"><input name="q6" type="radio" value="NOT GIVEN"/> NOT GIVEN</label>
+</div>
+</div>
+</div>
+<div class="section-title">Questions 7-13</div>
+<div class="instructions">Complete the notes below. Choose ONE WORD ONLY from the passage for each answer.</div>
+<div class="question-group">
+<div class="question" id="q7">
+<div class="question-title">
+<div class="question-number">7</div>
+<div class="question-text">researchers worked from the station at Grytviken and also from several <input class="fill-in-the-blank" name="q7" type="text"/></div>
+</div>
+</div>
+<div class="question" id="q8">
+<div class="question-title">
+<div class="question-number">8</div>
+<div class="question-text">local companies paid a <input class="fill-in-the-blank" name="q8" type="text"/> which funded the Discovery Investigations</div>
+</div>
+</div>
+<div class="question" id="q9">
+<div class="question-title">
+<div class="question-number">9</div>
+<div class="question-text">the first two Polar Years researched the effects of the <input class="fill-in-the-blank" name="q9" type="text"/></div>
+</div>
+</div>
+<div class="question" id="q10">
+<div class="question-title">
+<div class="question-number">10</div>
+<div class="question-text">Antarctica affects the world's <input class="fill-in-the-blank" name="q10" type="text"/> so it was a focus for the IGY</div>
+</div>
+</div>
+<div class="question" id="q11">
+<div class="question-title">
+<div class="question-number">11</div>
+<div class="question-text">Vivian Fuchs' expedition crossed Antarctica using special <input class="fill-in-the-blank" name="q11" type="text"/></div>
+</div>
+</div>
+<div class="question" id="q12">
+<div class="question-title">
+<div class="question-number">12</div>
+<div class="question-text">the total amount of <input class="fill-in-the-blank" name="q12" type="text"/> in Antarctica was calculated by Fuchs' expedition</div>
+</div>
+</div>
+<div class="question" id="q13">
+<div class="question-title">
+<div class="question-number">13</div>
+<div class="question-text">one result of the IGY was the establishment of a <input class="fill-in-the-blank" name="q13" type="text"/> to control aspects of Antarctica's future</div>
+</div>
+</div>
+</div>
+<button onclick="checkAnswers()">Submit Answers</button><button onclick="resetAnswers()" style="margin-left: 10px;">Reset Answers</button><div id="feedback" style="margin-top: 20px; font-weight: bold;"></div></div>
+</main>
+<footer>
+<div class="progress-container" id="progress-container">
+</div>
+<div class="action-buttons">
+<button class="btn-secondary" id="reset-btn">Reset Answers</button>
+<button class="btn-primary" id="submit-btn">Submit Answers</button>
+</div>
+</footer>
+<div class="feedback-overlay" id="feedback-overlay">
+<div class="feedback-container" id="feedback-container">
+<div class="feedback-header">
+<div class="feedback-title">
+<i class="fas fa-chart-bar"></i> Your Results
+                    <span class="score-display" id="score-display">0/13</span>
+</div>
+<button id="close-feedback" title="Close"><i class="fas fa-times"></i></button>
+</div>
+<div class="feedback-body" id="feedback-body">
+</div>
+</div>
+</div>
+<script>
+const correctAnswers = {
+    q1: "TRUE",
+    q2: "TRUE",
+    q3: "FALSE",
+    q4: "NOT GIVEN",
+    q5: "FALSE",
+    q6: "TRUE",
+    q7: "ships",
+    q8: "tax",
+    q9: "sun",
+    q10: "weather",
+    q11: "tractors",
+    q12: "ice",
+    q13: "treaty"
+};
+
+function checkAnswers() {
+    let feedback = "";
+    for (let i = 1; i <= 6; i++) {
+        const radios = document.getElementsByName("q" + i);
+        let selected = "";
+        for (const radio of radios) {
+            if (radio.checked) {
+                selected = radio.value;
+                break;
+            }
+        }
+        if (selected === correctAnswers["q" + i]) {
+            feedback += "Q" + i + ": Correct<br>";
+        } else {
+            feedback += "Q" + i + ": Incorrect (Correct: " + correctAnswers["q" + i] + ")<br>";
+        }
+    }
+    for (let i = 7; i <= 13; i++) {
+        const input = document.getElementsByName("q" + i)[0];
+        const userAnswer = input.value.trim().toLowerCase();
+        const correctAnswer = correctAnswers["q" + i].toLowerCase();
+        if (userAnswer === correctAnswer) {
+            feedback += "Q" + i + ": Correct<br>";
+        } else {
+            feedback += "Q" + i + ": Incorrect (Correct: " + correctAnswers["q" + i] + ")<br>";
+        }
+    }
+    document.getElementById("feedback").innerHTML = feedback;
+}
+</script>
+
+<script>
+function resetAnswers() {
+    for (let i = 1; i <= 6; i++) {
+        const radios = document.getElementsByName("q" + i);
+        for (const radio of radios) {
+            radio.checked = false;
+        }
+    }
+    for (let i = 7; i <= 13; i++) {
+        const input = document.getElementsByName("q" + i)[0];
+        input.value = "";
+    }
+    document.getElementById("feedback").innerHTML = "";
+}
+</script>
+</body>
+</html>
